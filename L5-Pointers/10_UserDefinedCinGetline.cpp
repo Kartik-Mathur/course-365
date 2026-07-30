@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void inputString(char *a,int s, char x){
+void inputString(char *a,int s, char x = '\n'){
 	// x vo character hai jaha tak input lena hai....
 
 	char ch =cin.get();
@@ -23,7 +23,7 @@ int main(){
 
 	char a[1000];
 
-	inputString(a, 100, '$');
+	inputString(a, 100);
 
 	cout << a << endl;
 
