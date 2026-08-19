@@ -38,7 +38,7 @@ int solve(string s){
 		return 0;
 	}
 
-	// recursive case
+	// recursive caseg
 	// Pehle character se har length ki string
 	int ans = 0;
 	for (int i = 0; i < s.size(); ++i)
