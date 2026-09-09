@@ -68,7 +68,8 @@ bool nQueen(int board[][100],int r,int n){
 		}
 	}
 
-	// column ke loop ke bahar aa gaye that means rth row mei kisi bhi cell mei queen place nhi hui
+	// column ke loop ke bahar aa gaye that means rth row mei kisi bhi cell mei 
+	// queen place nhi hui......
 	return false;
 }
 
