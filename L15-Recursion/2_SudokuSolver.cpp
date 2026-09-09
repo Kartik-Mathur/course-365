@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 bool isSafe(int mat[][9],int i,int j,int n,int number){
@@ -61,7 +62,7 @@ bool sudokuSolver(int mat[][9],int i,int j,int n){
 	{
 		if(isSafe(mat, i, j, n, number) == true){
 			
-			mat[i][j] = number;
+			mat[i][j] = number; // jo number recursion call se pehle rakha
 
 			bool kyaBakiSolveHua = sudokuSolver(mat, i, j+1, n);
 			
@@ -69,7 +70,7 @@ bool sudokuSolver(int mat[][9],int i,int j,int n){
 				return true; 
 			}
 
-			mat[i][j] = 0;// backtracking
+			mat[i][j] = 0; // backtracking
 		}
 	}
 
