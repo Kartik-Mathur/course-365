@@ -44,6 +44,7 @@ public:
 	// 4. Copy Constructor
 	Car(Car &X){
 		cout << "Inside Copy Constructor\n";
+		// name = X.name;
 		name = new char[strlen(X.name) + 1];
 		strcpy(name, X.name);
 		model = X.model;
@@ -118,6 +119,9 @@ int main(){
 	cout << "Model : "<<B.model << endl;
 	// Car E = A;
 	Car E(B);
+	Car F(B);
+
+	B.name[0] = 'T';
 
 	C = B; // Copy Assignment Operator function calling
 
@@ -126,6 +130,7 @@ int main(){
 	C.print();
 	D.print();
 	E.print();
+	F.print();
 
 
 
