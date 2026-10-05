@@ -97,7 +97,6 @@ node* mergeSort(node* head){
 	return nH;
 }
 
-
 int main(){
 
 	node* head, *tail;
