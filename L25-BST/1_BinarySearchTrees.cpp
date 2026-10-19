@@ -56,7 +56,6 @@ node* searchKey(node* root, int key){
 	else{
 		return searchKey(root->right,key);
 	}
-
 }
 
 node* createBST(){
@@ -131,6 +130,47 @@ void levelOrder(node* root){
 	}
 }
 
+bool isBST(node* root,int mi = INT_MIN,int mx = INT_MAX){
+	if(root == NULL) return true;
+
+	if(root->data >= mi and root->data <= mx and
+		isBST(root->left, mi, root->data) == true and
+		isBST(root->right, root->data, mx) == true ){
+		return true;
+	}
+
+	return false;
+}
+
+class Pair{
+public:
+	int height;
+	bool balanced;
+};
+
+Pair isBalanced(node* root){
+	if(root == NULL){
+		Pair p;
+		p.height = 0;
+		p.balanced = true;
+		return p;
+	}
+
+	Pair left = isBalanced(root->left);
+	Pair right = isBalanced(root->right);
+
+	Pair p;
+	p.height = max(left.height, right.height) + 1;
+
+	if(abs(left.height - right.height) <= 1 and left.balanced == true and right.balanced == true){
+		p.balanced = true;
+	}
+	else {
+		p.balanced = false;
+	}
+	return p;
+}
+
 int main(){
 
 	node* root = createBST();
@@ -153,6 +193,22 @@ int main(){
 		cout << "Key Found\n";
 	}
 
+	if(isBST(root)){
+		cout<<"BST hai\n";
+	}
+	else{
+		cout<<"BST Nahi hai\n";
+	}
+
+	Pair p = isBalanced(root);
+	cout << p.height<<endl;
+	cout << (p.balanced ? "Yes balanced hai\n" : "No balanced nahi hai\n");
+	// if(p.balanced == true){
+	// 	cout << "Yes balanced hai\n";
+	// }
+	// else{
+	// 	cout << "No balanced nahi hai\n";
+	// }
 	return 0;
 }
 
