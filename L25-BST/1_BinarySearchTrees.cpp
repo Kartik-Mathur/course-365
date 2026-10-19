@@ -27,6 +27,38 @@ node* insertInBST(node* root,int data){
 	return root;
 }
 
+void printRange(node* root, int k1, int k2){ // T.C: O(N)
+	if(root == NULL) return;
+
+	if(root->data >= k1){
+		printRange(root->left, k1, k2);
+	}
+
+	if(root->data >= k1 and root->data <= k2) {
+		cout << root->data << " ";	
+	}
+
+	if(root->data <= k2){
+		printRange(root->right, k1, k2);
+	}
+}
+
+node* searchKey(node* root, int key){
+	if(root == NULL) return NULL;
+
+	if(root->data == key){
+		return root;
+	}
+
+	if(root->data > key){
+		return searchKey(root->left,key);
+	}
+	else{
+		return searchKey(root->right,key);
+	}
+
+}
+
 node* createBST(){
 	node* root = NULL;
 
@@ -110,6 +142,16 @@ int main(){
 	postOrder(root);
 	cout << endl;
 	levelOrder(root);
+	printRange(root, 3, 9);
+	cout << endl;
+
+	node* ans = searchKey(root, 110);
+	if(ans == NULL){
+		cout << "Not Found\n";
+	}
+	else{
+		cout << "Key Found\n";
+	}
 
 	return 0;
 }
